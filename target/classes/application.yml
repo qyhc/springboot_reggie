@@ -6,6 +6,21 @@ spring:
         url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
         username: root
         password: 5508769123
+    data:
+        #Redis 相关配置
+        redis:
+            host: localhost
+            port: 6379
+            #password: 123456
+            database: 0
+            jedis:
+                #Redis连接池配置
+                pool:
+                    max-active: 8
+                    max-wait: 1ms
+                    max-idle: 4
+                    min-idle: 0
+
 
 # 开启mp的日志（输出到控制台）
 mybatis-plus:
