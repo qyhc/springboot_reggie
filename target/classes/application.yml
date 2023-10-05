@@ -20,6 +20,9 @@ spring:
                     max-wait: 1ms
                     max-idle: 4
                     min-idle: 0
+    cache:
+     redis:
+        time-to-live: 1800000 #设置缓存过期时间单位毫秒ms
 
 
 # 开启mp的日志（输出到控制台）
