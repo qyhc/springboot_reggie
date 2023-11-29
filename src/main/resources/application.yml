@@ -6,6 +6,48 @@ spring:
         url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
         username: root
         password: 5508769123
+
+    # shardingsphere:
+    #     datasource:
+    #         # 数据源名称，多数据源以逗号分隔
+    #         names:
+    #             master,slave
+    #         #主数据源
+    #         master:
+    #             type: com.alibaba.druid.pool.DruidDataSource
+    #             driver-class-name: com.mysql.cj.jdbc.Driver
+    #             url: jdbc:mysql://localhost:3306/reggie_rw?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    #             username: root
+    #             password: 5508769123
+    #         #从数据源
+    #         slave:
+    #             type: com.alibaba.druid.pool.DruidDataSource
+    #             driver-class-name: com.mysql.cj.jdbc.Driver
+    #             url: jdbc:mysql://localhost:3309/reggie_rw?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    #             username: root
+    #             password: 5508769123
+    #     #配置默认数据源master
+    #     sharding:
+    #         # 默认数据源，主要用于写，注意一定要配置读写分离；如果不配置就会把三个节点都当作从slave节点，新增，修改和删除会出错。
+    #         default-data-source-name: master
+    #     masterslave:
+    #         #读写分离配置
+    #         load-balance-algorithm-type: round_robin #轮询
+    #         #最终的数据源名称
+    #         name: dataSource
+    #         #主数据源名称
+    #         master-data-source-name: master
+    #         #从库数据源名称列表，多个逗号分隔
+    #         slave-data-source-names: slave
+
+
+        # 属性配置
+        props:
+            sql:
+                show: true #开启SQL显示，默认为false
+    main:
+        allow-bean-definition-overriding: true
+
     data:
         #Redis 相关配置
         redis:

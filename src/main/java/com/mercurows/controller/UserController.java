@@ -3,6 +3,8 @@ package com.mercurows.controller;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,6 @@ import com.mercurows.service.UserService;
 import com.mercurows.utils.SampleUtil;
 import com.mercurows.utils.ValidateCodeUtils;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController

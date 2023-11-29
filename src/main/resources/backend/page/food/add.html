@@ -447,6 +447,7 @@
           },
 
           submitForm(formName, st) {
+            // 校验数值合法性
             this.$refs[formName].validate((valid) => {
               if (valid) {
                 let params = {...this.ruleForm}
@@ -462,6 +463,7 @@
                 }
                 if (this.actionType == 'add') {
                   delete params.id
+                  // 新添菜品接口
                   addDish(params).then(res => {
                     if (res.code === 1) {
                       this.$message.success('菜品添加成功！')

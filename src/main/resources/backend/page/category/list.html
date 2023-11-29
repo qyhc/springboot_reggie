@@ -209,7 +209,9 @@
             this.classData.dialogVisible = true
           },
           editHandle(dat) {
+            // 修改弹出窗口的标题名称
             this.classData.title = '修改分类'
+            // 标识当前状态为编辑
             this.action = 'edit'
             this.classData.name = dat.name
             this.classData.sort = dat.sort
@@ -278,6 +280,7 @@
                   this.$message.error('请输入分类名称或排序')
               }
             } else if (valid) {
+              // if (this.action === 'edit')
               const reg = /^\d+$/
               if (reg.test(this.classData.sort)) {
                 editCategory({'id':this.classData.id,'name': this.classData.name, sort: this.classData.sort}).then(res => {

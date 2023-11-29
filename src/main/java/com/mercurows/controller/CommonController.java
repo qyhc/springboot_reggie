@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mercurows.common.R;
 
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/common")
 @Slf4j
 public class CommonController {
+    // 图片存放路径
+    // 文件在：springboot_reggie\src\main\resources\application.yml
     @Value("${reggie.path}")
     private String basePath;
 

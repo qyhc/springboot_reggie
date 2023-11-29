@@ -2,26 +2,28 @@ package com.mercurows.filter;
 
 import java.io.IOException;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.util.AntPathMatcher;
 
 import com.alibaba.fastjson2.JSON;
 import com.mercurows.common.BaseContext;
 import com.mercurows.common.R;
 
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /*
  * 检查用户是否登录
  */
 // filterName-拦截器名称 urlPatterns-拦截路径m
+// URL 匹配模式为 "/*"，即所有的请求都会经过这个过滤器。
 @WebFilter(filterName = "loginCheckFilter", urlPatterns = "/*")
 @Slf4j
 public class LoginCheckFilter implements Filter {

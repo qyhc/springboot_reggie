@@ -86,14 +86,20 @@ public class DishController {
         // 执行分页查询
         dishService.page(pageInfo, queryWrapper);
 
+        // 注意：此时的分页查询结果并不符合要求，因为pageInfo里面转的是Dish
+        // 而前端页面要求的不仅有Dish，而且还要有Dish对应的分类名称，
+        // 但是Dish中只有分类的id，所以还用通过id来得到分类名称
+
         // 对象拷贝
         // 忽略拷贝records对象
+        // 将pageInfo(Dish)数据拷贝到dishDtoPage(DishDto)中
         BeanUtils.copyProperties(pageInfo, dishDtoPage, "records");
 
         List<Dish> records = pageInfo.getRecords();
         List<DishDto> list = records.stream().map((item) -> {
             DishDto dishDto = new DishDto();
 
+            // 将item(Dish)对象拷贝到dishDto中
             BeanUtils.copyProperties(item, dishDto);
 
             Long categoryId = item.getCategoryId(); //分类id

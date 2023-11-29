@@ -20,6 +20,7 @@
                 :on-success="handleAvatarSuccess"
                 :before-upload="beforeUpload"
                 ref="upload">
+              <!-- 上传完图片之后会将图片显示出来 -->
             <img v-if="imageUrl" :src="imageUrl" class="avatar"></img>
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
@@ -41,8 +42,14 @@
           }
         },
         methods: {
+          // 图片下载
+          // response是上传成功之后的返回响应体
           handleAvatarSuccess (response, file, fileList) {
-              this.imageUrl = `/common/download?name=${response.data}`
+            alert("====handleAvatarSuccess====");
+            // response.data是上传完图片之后的图片生成的名字
+            this.imageUrl = `/common/download?name=${response.data}`
+            alert("response is :"+response);
+            alert("response.data is :"+response.data);
           },
           beforeUpload (file) {
             if(file){

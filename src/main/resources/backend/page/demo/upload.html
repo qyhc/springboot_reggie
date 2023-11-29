@@ -43,6 +43,10 @@
         methods: {
           handleAvatarSuccess (response, file, fileList) {
               this.imageUrl = `/common/download?name=${response.data}`
+              alert("====handleAvatarSuccess====");
+              alert("response is :"+response);
+              alert("response.data is :"+response.data);
+
           },
           beforeUpload (file) {
             if(file){
